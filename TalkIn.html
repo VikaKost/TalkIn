@@ -9,9 +9,7 @@
     <title>TalkIn</title>
 </head>
 <body>
-<main>
-<div class="wrapper">
-    <header class="header">
+    <header>
         <div class="wrapper-header">
             <div class="user-info">
                 <img src="images/wmn_icon.png" alt="user icon">
@@ -19,17 +17,17 @@
             </div>
             <div class="logo-exit">
                 <div class="header-logo">
-                <img src="images/logo_w.png" alt="logo">
+                    <img src="images/logo_w.png" alt="logo">
                 </div>
                 <div class="exit">
                     <span class="iconify icon-srch icon-srch-mobile" data-icon="ant-design:search-outlined" data-inline="false"></span>
-                    <span>Выйти</span>
+                    <span id="exit-text">Выйти</span>
                     <span class="iconify exit-icon" data-icon="ion:exit-outline" data-inline="false"></span>
                 </div>
             </div>
         </div>
     </header>
-    <div class="main">
+    <main>
         <div class="main-wrapper">
         <div class="online-form">
             <div class="onl-list">
@@ -146,13 +144,29 @@
                     </div>
                     <span class="mes-time">17:42</span>
                 </div>
-                <div class="mes private-mes">
+                <div class="mes" id="private-mes">
                     <img src="images/mn_icon.png" alt="user-icon">
                     <div class="mes-info">
                         <span class="mes-name">Alexey</span>
                         <span>)</span>
                     </div>
                     <span class="mes-time">17:43</span>
+                </div>
+                <div class="mes">
+                    <img src="images/wmn_icon.png" alt="user-icon">
+                    <div class="mes-info">
+                        <span class="mes-name">Liza</span>
+                        <span>Здесь ваш текст.." Многие программы</span>
+                    </div>
+                    <span class="mes-time">17:44</span>
+                </div>
+                <div class="mes">
+                    <img src="images/wmn_icon.png" alt="user-icon">
+                    <div class="mes-info">
+                        <span class="mes-name">Liza</span>
+                        <span>Здесь ваш текст.." Многие программы</span>
+                    </div>
+                    <span class="mes-time">17:44</span>
                 </div>
                 <div class="mes">
                     <img src="images/wmn_icon.png" alt="user-icon">
@@ -181,7 +195,7 @@
             </div>
             <div class="input-form">
                 <div class="input-area">
-                    <input type="text" size="50" placeholder="Напишите сообщение...">
+                    <input type="text" size="40" placeholder="Напишите сообщение...">
                     <span class="iconify smile" data-icon="bi:emoji-smile" data-inline="false"></span>
                     <span class="iconify clip" data-icon="simple-line-icons:paper-clip" data-inline="false"></span>
                 </div>
@@ -189,8 +203,8 @@
             </div>
         </div>
         </div>
-    </div>
-</div>
+    </main>
+
     <footer class="footer">
         <div class="footer-wrap">
             <img src="images/logo_p.png" alt="logo">
@@ -201,6 +215,5 @@
             </div>
         </div>
     </footer>
-    </main>
 </body>
 </html>
