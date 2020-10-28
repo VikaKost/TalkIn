@@ -1,0 +1,56 @@
+html,
+body{
+    height:100%;
+    width:100%;
+    margin: 0;
+    background-color: #a9a9a9;
+}
+
+.modal-form{
+    height: 16rem;
+    width: 30rem;
+    padding: 1rem;
+    background-color: #fff;
+}
+
+wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.close{
+    float:right;
+}
+
+.hr-line{
+    background: #111;
+}
+
+.content{
+    padding: 1.5rem;
+    position: relative;
+    height: calc(100% - 3rem);
+}
+
+.content button{
+    position: absolute;
+    display: inline-block;
+    bottom: 0;
+    right: 0;
+    border: none;
+    color: #fff;
+    padding: 0.5rem 0.9rem;
+    background: #3c59ba;
+}
+
+.content button:hover{
+    outline: none;
+    background: #162145;
+}
+
+.content button:focus{
+    outline: none;
+}
