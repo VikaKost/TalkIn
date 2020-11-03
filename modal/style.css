@@ -9,16 +9,14 @@ body{
 .modal-form{
     height: 16rem;
     width: 30rem;
+    width: 400px;
+    margin: 14rem auto;
+    padding: 5px 20px 13px 20px;
+    background: #fff;
+    background: -moz-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);
     padding: 1rem;
     background-color: #fff;
-}
-
-wrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
 }
 
 .close{
@@ -35,22 +33,45 @@ wrapper{
     height: calc(100% - 3rem);
 }
 
-.content button{
-    position: absolute;
-    display: inline-block;
-    bottom: 0;
+.modal{
+    z-index: 10000;
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
     right: 0;
-    border: none;
-    color: #fff;
-    padding: 0.5rem 0.9rem;
-    background: #3c59ba;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 99999;
+}
+
+.content button{
+position: absolute;
+display: inline-block;
+bottom: 0;
+right: 0;
+border: none;
+color: #fff;
+padding: 0.5rem 0.9rem;
+background: #3c59ba;
 }
 
 .content button:hover{
-    outline: none;
-    background: #162145;
+outline: none;
+background: #162145;
 }
 
 .content button:focus{
-    outline: none;
+outline: none;
+}
+
+.clickMe{
+    background: #3c59ba;
+    width: fit-content;
+    padding: 0.5rem;
+    margin: 0 auto;
+    border-radius: 0.2rem;
+    color: #fff;
+    text-align: center;
+    margin-top: 13rem;
 }

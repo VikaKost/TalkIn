@@ -1,0 +1,12 @@
+:root {
+    --blue: #0071c2;
+    --darkBlue: #003580;
+    --yellow: rgb(255, 206, 49);
+    --green: #008009;
+    --gray: #6e6e6e;
+    --red: #FF0000;
+    --orange: #bc5b01;
+    --white: #ffffff;
+    --lightGray: #DCDCDC;
+    --font: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
