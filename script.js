@@ -186,12 +186,13 @@ const MainModule = (function() {
     const filterObj = {
         author: (item, author) => !author || item.author.toLowerCase().includes(author.toLowerCase()),
         text: (item, text) => !text || item.text.toLowerCase().includes(text.toLowerCase()),
-        dateTo: (item, dateTo) => !dateTo || item.dateTo < dateTo,
-        dateFrom: (item, dateFrom) => !dateFrom || item.dateFrom > dateFrom,
+        dateTo: (item, dateTo) => item.createdAt <= dateTo,
+        dateFrom: (item, dateFrom) => item.createdAt >= dateFrom,
     };
 
     const validateObj ={
-        text: (item) => item.text && item.text.length <= 200
+        text: (item) => item.text && item.text.length <= 200,
+        author: (item) => item.author && item.author.length <= 30
     };
 
     let currentAuthor = 'Sergey';
@@ -202,10 +203,10 @@ const MainModule = (function() {
             result = result.filter((item) => filterObj[key](item, filterConfig[key]));
         });
         function sortByDate(arr) {
-            arr.sort((a, b) => a.createdAt > b.createdAt ? 1 : -1)
+            arr.sort((a,b ) => a.createdAt >= b.createdAt ? 1 : -1)
         }
         sortByDate(result);
-        result = result.slice(skip, skip + top);
+        result = result.slice(skip, top + skip);
         return result;
 
     }
@@ -218,17 +219,25 @@ const MainModule = (function() {
         return Object.keys(validateObj).every((key) => validateObj[key](msg));
     }
 
-    function addMessage(msg){
+    function addMessage(msg,  to = undefined){
 
-        if (validate(msg)){
             msg.id = String(+new Date());
             msg.createdAt = new Date();
             msg.author = currentAuthor;
-            msg.isPersonal = false;
+            if (to === undefined){
+                msg.isPersonal = false
+            }
+            else{
+                msg.isPersonal = true;
+                msg.to = to;
+            }
+        if (validate(msg)){
             messages.push(msg);
             return true;
         }
-        return false;
+        else {
+            return false;
+        }
     }
 
     function editMessage(id, msg){
@@ -253,13 +262,17 @@ const MainModule = (function() {
 
 
     //CHECK
-    console.log(getMessages());
+
     //console.log(getMessage('5'));
     //addMessage({text:'Текст нового сообщения'});
+    //addMessage({text:'Текст нового сообщения', to: 'Liza'});
     //editMessage('5', {text: 'Текст измененного сообщения'});
-    //removeMessage('5');
+    //removeMessage('7');
     //console.log(messages);
-
+    //console.log(getMessages(0, 10));
+    //console.log(getMessages(0, 10, {author:'Liza'}));
+    //console.log(getMessages(0, 10, {author:'Liza', text: 'вам'}));
+    //console.log(getMessages(0, 10, {dateFrom: new Date('2020-10-13T15:08:43'), dateTo: new Date('2020-10-29T12:21:50')}));
 
 }());
 
