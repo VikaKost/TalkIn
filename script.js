@@ -202,10 +202,9 @@ const MainModule = (function() {
         Object.keys(filterConfig).forEach((key) => {
             result = result.filter((item) => filterObj[key](item, filterConfig[key]));
         });
-        function sortByDate(arr) {
-            arr.sort((a,b ) => a.createdAt >= b.createdAt ? 1 : -1)
-        }
-        sortByDate(result);
+
+        result.sort((a,b ) => a.createdAt >= b.createdAt ? 1 : -1)
+
         result = result.slice(skip, top + skip);
         return result;
 
@@ -219,17 +218,16 @@ const MainModule = (function() {
         return Object.keys(validateObj).every((key) => validateObj[key](msg));
     }
 
-    function addMessage(msg,  to = undefined){
+    function addMessage(msg){
 
             msg.id = String(+new Date());
             msg.createdAt = new Date();
             msg.author = currentAuthor;
-            if (to === undefined){
-                msg.isPersonal = false
+            if (!msg.to){
+                msg.isPersonal = false;
             }
             else{
                 msg.isPersonal = true;
-                msg.to = to;
             }
         if (validate(msg)){
             messages.push(msg);
@@ -269,7 +267,7 @@ const MainModule = (function() {
     //editMessage('5', {text: 'Текст измененного сообщения'});
     //removeMessage('7');
     //console.log(messages);
-    //console.log(getMessages(0, 10));
+    //console.log(getMessages(0, 25));
     //console.log(getMessages(0, 10, {author:'Liza'}));
     //console.log(getMessages(0, 10, {author:'Liza', text: 'вам'}));
     //console.log(getMessages(0, 10, {dateFrom: new Date('2020-10-13T15:08:43'), dateTo: new Date('2020-10-29T12:21:50')}));
