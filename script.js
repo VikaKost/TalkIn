@@ -185,163 +185,152 @@ const messages = [
 
 class Message {
   constructor(msg = {}) {
-    this._id = msg.id;
-    this._createdAt = msg.createdAt;
+    this.id = msg.id;
+    this.createdAt = msg.createdAt;
     this.text = msg.text;
-    this._author = msg.author;
-    if (!msg.to) {
+    this.author = msg.author;
+    if (!msg.to){
       this.isPersonal = false;
-    } else {
+    }
+    else{
       this.isPersonal = true;
       this.to = msg.to;
     }
 
   };
+  set Change(value) {
+    this.id =()=>{
+      if (value !==Message.id){
+        throw new Error("this field can't be changed")
+      }
+    }
+    this.createdAt=()=>{
+      if (value !==Message.createdAt){
+        throw new Error("this field can't be changed")
+      }
+    }
+    this.author=()=>{
+      if (value !==Message.author){
+        throw new Error("this field can't be changed")
+      }
+    }
 
-  get id() {
-    return this._id;
+  };
+
+}
+class MessageList{
+  constructor(msgs) {
+    this._messages = [];
+    msgs.forEach(item => {
+      this._messages.push(new Message(item));
+    });
   }
-  set id(value){
-    throw new Error("this field can't be changed");
+  getPage(_user, skip = 0, top = 10, filterConfig={}) {
+    const filterObj = {
+      author: (item, author) => !author || item.author.toLowerCase().includes(author.toLowerCase()),
+      text: (item, text) => !text || item.text.toLowerCase().includes(text.toLowerCase()),
+      dateTo: (item, dateTo) => item.createdAt <= dateTo,
+      dateFrom: (item, dateFrom) => item.createdAt >= dateFrom,
+    };
+
+    let result = this._messages.slice();
+    result = this._messages.filter(item=> !item.to || item.to === _user);
+    Object.keys(filterConfig).forEach((key) => {
+      result = result.filter((item) => filterObj[key](item, filterConfig[key]));
+    });
+
+    result.sort((a,b ) => a.createdAt >= b.createdAt ? 1 : -1)
+
+    result = result.slice(skip, top + skip);
+    return result;
+
+  }
+  get(idMes){
+    return this._messages.find(item => item.id === idMes);
   }
 
-  get createdAt() {
-    return this._createdAt;
-  }
-  set createdAt(value){
-    throw new Error("this field can't be changed");
+
+  validate(msg){
+    const validateObj ={
+      id: (item) => item.id,
+      createdAt: (item) => item.createdAt,
+      isPersonal: (item) => item.isPersonal !== undefined,
+      text: (item) => item.text && item.text.length <= 200 && item.text.length > 0,
+      author: (item) => item.author && item.author.length <= 30 && item.author.length > 0
+    };
+    return Object.keys(validateObj).every((key) => validateObj[key](msg));
+
   }
 
-  get author() {
-    return this._author;
+  add(_user, msg){
+    const mes = new Message({id: String(+new Date()),  createdAt: new Date(), text: msg.text, author: _user, to: msg.to});
+    if (this.validate(mes)){
+      this._messages.push(mes);
+      return true;
+    }
+    else {
+      return false;
+    }
   }
-  set author(value){
-    throw new Error("this field can't be changed");
+
+  edit(_user, id, msg){
+    let idEdit = this.get(id);
+
+    if ((_user !== idEdit.author)){
+      return false;
+    }
+    if (this.validate(idEdit) ){
+      for(let key in msg){
+        idEdit[key] = msg[key];
+      }
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  remove(_user, id){
+    let idRemove = this._messages.map((el) => el.id).indexOf(id);
+
+    if (_user !== this._messages[idRemove].author){
+      return false;
+    }
+    this._messages.splice(idRemove,1);
+    return this._messages;
+
+  }
+
+  addAll(msgs){
+    const arr = []
+    msgs.forEach(item => {
+      if (this.validate(item)){
+        this._messages.push(item);
+      }
+      else {
+        arr.push(item)
+      }
+    });
+    return arr;
+  }
+
+  clear(){
+    this._messages = [];
   }
 
 }
+let list = new MessageList(messages);
 
 
- class MessageList{
-   constructor(user, msgs) {
-     this._user = user;
-     this._messages = [];
-     msgs.forEach(item => {
-       this._messages.push(new Message(item));
-     });
-   }
 
-   get user(){
-     return this._user;
-   };
-   set user(value){
-     throw new Error("this field can't be changed");
-   };
-
-
-     getPage( skip = 0, top = 10, filterConfig={}) {
-
-       const filterObj = {
-         author: (item, author) => !author || item.author.toLowerCase().includes(author.toLowerCase()),
-         text: (item, text) => !text || item.text.toLowerCase().includes(text.toLowerCase()),
-         dateTo: (item, dateTo) => item.createdAt <= dateTo,
-         dateFrom: (item, dateFrom) => item.createdAt >= dateFrom,
-       };
-
-     let result = this._messages.slice();
-       result = this._messages.filter(item=> !item.to || item.to === this.user || item.author === this.user);
-     Object.keys(filterConfig).forEach((key) => {
-       result = result.filter((item) => filterObj[key](item, filterConfig[key]));
-     });
-     result.sort((a,b ) => a.createdAt >= b.createdAt ? 1 : -1)
-     result = result.slice(skip, top + skip);
-     return result;
-   }
-
-   get(idMes){
-     return this._messages.find(item => item.id === idMes);
-   }
-
-    validate(msg){
-     const validateObj ={
-       id: (item) => item.id,
-       createdAt: (item) => item.createdAt,
-       isPersonal: (item) => item.isPersonal !== undefined,
-       text: (item) => item.text && item.text.length <= 200 && item.text.length > 0,
-       author: (item) => item.author && item.author.length <= 30 && item.author.length > 0
-     };
-     return Object.keys(validateObj).every((key) => validateObj[key](msg));
-   }
-
-    add(msg){
-       const mes = new Message({id : String(+new Date()), createdAt : new Date(), text: msg.text, author: this.user,  to: msg.to});
-       if (this.validate(mes)){
-       this._messages.push(mes);
-       return true;
-     }
-     else {
-       return false;
-     }
-   }
-
-   edit(id, msg){
-     let idEdit = this.get(id);
-
-     if ((this.user !== idEdit.author)){
-       return false;
-     }
-     if (this.validate(idEdit) ){
-       for(let key in msg){
-         idEdit[key] = msg[key];
-       }
-       return true;
-     }
-     else{
-       return false;
-     }
-   }
-
-   remove(id){
-     let idRemove = this._messages.findIndex( currentValue => currentValue.id === id );
-     if (this.user !== this._messages[idRemove].author){
-       return false;
-     }
-     this._messages.splice(idRemove,1);
-     return true;
-
-   }
-
-   addAll(msgs){
-     const arr = []
-     msgs.forEach(item => {
-     if (this.validate(item)){
-       this._messages.push(item);
-     }
-     else {
-       arr.push(item)
-     }
-     });
-     return arr;
-   }
-
-   clear(){
-     this._messages = [];
-   }
-
-}
-let list = new MessageList('Liza', messages);
-
-
-//console.log(list.add({text:'Текст нового сообщения', to: 'Liza'}));
-//console.log(list.remove('4'));
-//console.log(list.getPage(0, 25));
+//console.log(list.getPage('Liza',0, 25));
+//console.log(list.add({text:'Текст нового сообщения', to: 'Liza', author: 'Max'}));
 //console.log(list._messages);
-//console.log(list.edit('5', {text: 'Текст измененного сообщения'}));
-
+//console.log(list.edit('Max','5', {text: 'Текст измененного сообщения'}));
+//console.log(list.remove('Max','5'));
 //console.log(list.addAll(messages));
 //console.log(list._messages);
 //console.log(list);
 //console.log(list.clear());
 //console.log(list.get('5'));
 //console.log( Object.getOwnPropertyDescriptor (mes, 'id'));
-
