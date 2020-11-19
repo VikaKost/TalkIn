@@ -157,7 +157,7 @@ const messages = [
     id: '22',
     text: 'он нашёл неоспоримый первоисточник',
     createdAt: new Date('2020-10-29T13:58:06'),
-    author: 'Liza',
+    author: 'Viktoria',
     isPersonal: false
   },
   {
@@ -178,10 +178,80 @@ const messages = [
     id: '25',
     text: 'За прошедшие годы',
     createdAt: new Date('2020-11-01T18:43:06'),
-    author: 'Max',
+    author: 'Viktoria',
     isPersonal: false
   }
 ];
+
+const users = ['Max', 'Alina', 'Vlad', 'Liza', 'Dasha', 'Катя', 'Nik', 'Вика', 'Sasha', 'Vlad', 'Olha'];
+const activeUsers = ['Max', 'Alina', 'Vlad', 'Liza', 'Dasha', 'Катя', 'Nik', 'Вика', 'Sasha'];
+
+class UserList{
+ constructor(users, activeUsers){
+    this.users = users;
+    this.activeUsers = activeUsers;
+  }
+}
+class HeaderView{
+  constructor(containerId) {
+    this.id = containerId;
+  }
+
+  display(userName){
+    const idUser = document.getElementById(this.id);
+    if(userName){
+      idUser.textContent = userName;
+    }
+    else{
+      idUser.textContent = 'user';
+    }
+
+}
+}
+
+class MessagesView{
+  constructor(containerId) {
+    this.idmes = containerId
+  }
+  display(msg){
+    let msgs = document.getElementById(this.idmes);
+    //let wrap = document.createElement('div');
+    //wrap.className = 'wrap';
+    msgs. innerHTML = '<div id="msgs-list"></div>';
+    let mesList = document.getElementById('msgs-list');
+    msg.forEach(item =>{
+      let time = item.createdAt.getHours()+':'+item.createdAt.getMinutes();
+      mesList.innerHTML += "<div class=\"mes\">" +
+        "<img src=\"images/mn_icon.png\">" +
+        "<div class=\"mes-info\">" +
+        "<span class=\"mes-name\"> "+ item.author + "</span>" +
+        "<span class=\"mes-text\">" + item.text + "</span>" +
+        "</div>" +
+        "<span class=\"mes-time\"> " + time + "</span>" +
+        "</div>"
+ })
+  }
+}
+
+class ActiveUsersView{
+  constructor(containerId) {
+    this.idmes = containerId
+  }
+  display(users){
+    users.forEach(item =>{
+      let items = document.getElementById(this.idmes);
+      let onlUser = document.createElement('div');
+      let imgUser = document.createElement('img');
+      let name = document.createElement('span');
+      items.append(onlUser);
+      onlUser.appendChild(imgUser);
+      onlUser.appendChild(name);
+      onlUser.className = 'onl-user';
+      imgUser.src = 'images/mn_icon.png';
+      name.textContent = item;
+    })
+  }
+}
 
 class Message {
   constructor(msg = {}) {
@@ -221,7 +291,6 @@ class Message {
 
 }
 
-
  class MessageList{
    constructor(user, msgs) {
      this._user = user;
@@ -253,9 +322,9 @@ class Message {
      Object.keys(filterConfig).forEach((key) => {
        result = result.filter((item) => filterObj[key](item, filterConfig[key]));
      });
-     result.sort((a,b ) => a.createdAt >= b.createdAt ? 1 : -1)
+     result.sort((a,b ) => a.createdAt <= b.createdAt ? 1 : -1)
      result = result.slice(skip, top + skip);
-     return result;
+     return result.reverse();
    }
 
    get(idMes){
@@ -329,19 +398,59 @@ class Message {
    }
 
 }
-let list = new MessageList('Liza', messages);
+
+function showMessages(skip, top){
+  let MessagesList = list.getPage(skip, top);
+    mes.display(MessagesList);
+
+}
+
+function showActiveUsers(){
+  let list = new UserList(users, activeUsers);
+  let dis = new ActiveUsersView('usersList');
+  dis.display(list.activeUsers);
+}
+
+function setCurrentUser(user){
+  let header = new HeaderView('user');
+  header.display(user);
+  return user;
+}
+
+function addMessage(msg){
+  list.add(msg);
+  showMessages(0, 10);
+}
+
+function editMessage(id,msg){
+  list.edit(id, msg);
+  showMessages(0, 10);
+}
+
+function removeMessage(id){
+list.remove(id);
+showMessages(0,10);
+}
+
+const list = new MessageList(setCurrentUser('Viktoria'), messages);
+const mes = new MessagesView('list');
+showActiveUsers();
+showMessages(0,10);
+addMessage({text:'Текст нового сообщения', to: 'Liza'});
+editMessage('22', {text: 'Текст измененного сообщения'});
+//removeMessage('22');
+
 
 
 //console.log(list.add({text:'Текст нового сообщения', to: 'Liza'}));
 //console.log(list.remove('4'));
-//console.log(list.getPage(0, 25));
+//console.log(list.getPage(0, 10));
 //console.log(list._messages);
 //console.log(list.edit('5', {text: 'Текст измененного сообщения'}));
-
+//console.log(users.users);
 //console.log(list.addAll(messages));
 //console.log(list._messages);
 //console.log(list);
 //console.log(list.clear());
 //console.log(list.get('5'));
 //console.log( Object.getOwnPropertyDescriptor (mes, 'id'));
-
