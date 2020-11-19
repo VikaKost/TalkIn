@@ -324,6 +324,13 @@ main{
     margin-right: 0.5rem;
 }
 
+.usersList{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .top-arr{
     margin-bottom: 0.3rem;
 }
@@ -347,6 +354,12 @@ main{
     border: none;
     bottom: 0;
     margin-bottom: 0;
+}
+
+#user-filter,
+#text-filter,
+#date-filter{
+    color: darkgrey;
 }
 
 .search-area{

@@ -4,9 +4,8 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="variables.css">
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
-    <script src="script.js"></script>
-    <script src="js-deep-extra-1.js"></script>
-    <script src="js-deep-extra-2.js"></script>
+
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>TalkIn</title>
@@ -16,7 +15,7 @@
         <div class="wrapper-header">
             <div class="user-info">
                 <img src="images/wmn_icon.png" alt="user icon">
-                <span>Viktoria</span>
+                <span id ="user"></span>
             </div>
             <div class="logo-exit">
                 <div class="header-logo">
@@ -35,47 +34,12 @@
         <div class="online-form">
             <div class="onl-list">
                 <span class="iconify top-arr" data-icon="eva:arrow-ios-upward-fill" data-inline="false"></span>
-                <div class="onl-user">
-                    <img src="images/mn_icon.png" alt="user icon">
-                    <span>Max</span>
-                </div>
-                <div class="onl-user">
-                    <img src="images/wmn_icon.png" alt="user icon">
-                    <span>Alina</span>
-                </div>
-                <div class="onl-user">
-                    <img src="images/mn_icon.png" alt="user icon">
-                    <span>Nik</span>
-                </div>
-                <div class="onl-user">
-                    <img src="images/wmn_icon.png" alt="user icon">
-                    <span>Dasha</span>
-                </div>
-                <div class="onl-user">
-                    <img src="images/mn_icon.png" alt="user icon">
-                    <span>Alexey</span>
-                </div>
-                <div class="onl-user">
-                    <img src="images/wmn_icon.png" alt="user icon">
-                    <span>Liza</span>
-                </div>
-                <div class="onl-user">
-                    <img src="images/wmn_icon.png" alt="user icon">
-                    <span>Катя</span>
-                </div>
-                <div class="onl-user">
-                    <img src="images/mn_icon.png" alt="user icon">
-                    <span>Ivan_D</span>
-                </div>
-                <div class="onl-user">
-                    <img src="images/wmn_icon.png" alt="user icon">
-                    <span>Вика</span>
-                </div>
+                <div class="usersList" id = "usersList"></div>
                 <span class="iconify bottom-arr" data-icon="eva:arrow-ios-downward-outline" data-inline="false"></span>
                 <div class="search-form">
-                    <span class="iconify search-icon" data-icon="bx:bxs-user" data-inline="false"></span>
-                    <span class="iconify search-icon" data-icon="clarity:calendar-line" data-inline="false"></span>
-                    <span class="iconify search-icon" data-icon="bi:chat-left-text-fill" data-inline="false"></span>
+                    <span class="iconify search-icon" data-icon="bx:bxs-user" data-inline="false" id ="user-filter"></span>
+                    <span class="iconify search-icon" data-icon="clarity:calendar-line" data-inline="false" id ="date-filter"></span>
+                    <span class="iconify search-icon" data-icon="bi:chat-left-text-fill" data-inline="false" id ="text-filter"></span>
                     <div class="search-area">
                         <input type="text" size="10" placeholder="Поиск">
                         <span class="iconify icon-srch" data-icon="ant-design:search-outlined" data-inline="false"></span>
@@ -89,113 +53,7 @@
                 <span class="more-text">Загрузить еще</span>
             </a>
             <div class="mes-date"><span>9 сентября</span></div>
-            <div class="mes-list">
-                <div class="mes">
-                    <img src="images/mn_icon.png" alt="user-icon">
-                    <div class="mes-info">
-                        <span class="mes-name">Max</span>
-                        <span>Давно выяснено, что при оценке дизайна и композиции</span>
-                    </div>
-                    <span class="mes-time">17:35</span>
-                </div>
-                <div class="mes">
-                    <img src="images/mn_icon.png" alt="user-icon">
-                    <div class="mes-info">
-                        <span class="mes-name">Max</span>
-                        <span>Давно</span>
-                    </div>
-                    <span class="mes-time">17:35</span>
-                </div>
-                <div class="mes">
-                    <img src="images/wmn_icon.png" alt="user-icon">
-                    <div class="mes-info">
-                        <span class="mes-name">Dasha</span>
-                        <span>распределение букв</span>
-                    </div>
-                    <span class="mes-time">17:38</span>
-                </div>
-                <div class="mes">
-                    <img src="images/wmn_icon.png" alt="user-icon">
-                    <div class="mes-info">
-                        <span class="mes-name">Liza</span>
-                        <span>Есть много вариантов Lorem Ipsum</span>
-                    </div>
-                    <span class="mes-time">17:39</span>
-                </div>
-                <div class="toself">
-                    <div class="self-user-info">
-                    <img src="images/wmn_icon.png" alt="user-icon">
-                    <span class="mes-name">Liza</span>
-                    </div>
-                    <div class="self-edit">
-                        <span class="iconify" data-icon="emojione-monotone:pencil" data-inline="false"></span>
-                        <span class="iconify del" data-icon="carbon:delete" data-inline="false"></span>
-                    </div>
-                <div class="mes self-mes">
-                    <div class="mes-info">
-                        <span class="mes-name">Вы</span>
-                        <span>Давно выяснено</span>
-                    </div>
-                    <span class="mes-time">17:41</span>
-                </div>
-                </div>
-                <div class="mes">
-                    <img src="images/wmn_icon.png" alt="user-icon">
-                    <div class="mes-info">
-                        <span class="mes-name">Dasha</span>
-                        <span>Также все другие известные генераторы</span>
-                    </div>
-                    <span class="mes-time">17:42</span>
-                </div>
-                <div class="mes" id="private-mes">
-                    <img src="images/mn_icon.png" alt="user-icon">
-                    <div class="mes-info">
-                        <span class="mes-name">Alexey</span>
-                        <span>)</span>
-                    </div>
-                    <span class="mes-time">17:43</span>
-                </div>
-                <div class="mes">
-                    <img src="images/wmn_icon.png" alt="user-icon">
-                    <div class="mes-info">
-                        <span class="mes-name">Liza</span>
-                        <span>Здесь ваш текст.." Многие программы</span>
-                    </div>
-                    <span class="mes-time">17:44</span>
-                </div>
-                <div class="mes">
-                    <img src="images/wmn_icon.png" alt="user-icon">
-                    <div class="mes-info">
-                        <span class="mes-name">Liza</span>
-                        <span>Здесь ваш текст.." Многие программы</span>
-                    </div>
-                    <span class="mes-time">17:44</span>
-                </div>
-                <div class="mes">
-                    <img src="images/wmn_icon.png" alt="user-icon">
-                    <div class="mes-info">
-                        <span class="mes-name">Liza</span>
-                        <span>Здесь ваш текст.." Многие программы</span>
-                    </div>
-                    <span class="mes-time">17:44</span>
-                </div>
-                <div class="mes">
-                    <img src="images/mn_icon.png" alt="user-icon">
-                    <div class="mes-info">
-                        <span class="mes-name">Max</span>
-                        <span>Давно выяснено</span>
-                    </div>
-                    <span class="mes-time">17:44</span>
-                </div>
-                <div class="mes">
-                    <img src="images/wmn_icon.png" alt="user-icon">
-                    <div class="mes-info">
-                        <span class="mes-name">Liza</span>
-                        <span>Давно </span>
-                    </div>
-                    <span class="mes-time">17:46</span>
-                </div>
-            </div>
+            <div class="mes-list" id="list"></div>
             <div class="input-form">
                 <div class="input-area">
                     <input type="text" size="40" placeholder="Напишите сообщение...">
@@ -219,4 +77,5 @@
         </div>
     </footer>
 </body>
+<script src="script.js"></script>
 </html>
