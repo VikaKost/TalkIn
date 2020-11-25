@@ -1,0 +1,12 @@
+.calendar{
+    border-collapse: collapse;
+    border-spacing: 0 0;
+}
+th{
+    background: #999999;
+}
+td,th {
+    text-align: center;
+    padding: 0.3rem;
+    border: 1px solid black;
+}

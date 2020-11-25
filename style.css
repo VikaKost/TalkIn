@@ -71,13 +71,17 @@ main{
     margin-bottom: .3rem;
 }
 
-.exit{
+.exit,
+.login {
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
-
+.login exit-icon{
+    display: none;
+}
 .exit-icon{
+    display: block;
     font-size: 1.5rem;
     margin-left: .5rem;
 }
@@ -148,11 +152,16 @@ main{
     margin-right: 0.5rem;
 }
 
-.mes-name{
+.mes-name,
+.to-name{
     display: block;
     margin-bottom: 0.2rem;
     color: var(--purple);
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.to-name{
+    color: var(--white);
 }
 
 .mes-info{
@@ -178,14 +187,20 @@ main{
     color: var(--white)im
 }
 
-.self-mes{
-    padding-left: 1rem;
+.self-mes {
+    margin-right: 0;
+    margin-left: auto;
+    padding-left: 0.5rem;
 }
-
 .toself{
     display: flex;
     align-items: center;
     justify-content: flex-end;
+}
+
+.nameTo{
+    position: absolute;
+    margin-left: -3.5rem;
 }
 
 .self-user-info{
