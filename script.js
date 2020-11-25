@@ -172,7 +172,9 @@ const messages = [
     text: 'происходит от одной из строк в разделе',
     createdAt: new Date('2020-11-01T17:18:06'),
     author: 'Ivan',
-    isPersonal: false
+    isPersonal: true,
+    to : 'Viktoria'
+
   },
   {
     id: '25',
@@ -199,11 +201,14 @@ class HeaderView{
 
   display(userName){
     const idUser = document.getElementById(this.id);
+    const inOut = document.getElementById('exit-text');
     if(userName){
       idUser.textContent = userName;
+      inOut.textContent = 'Выйти';
     }
     else{
       idUser.textContent = 'user';
+      inOut.textContent = 'Войти';
     }
 
 }
@@ -215,21 +220,40 @@ class MessagesView{
   }
   display(msg){
     let msgs = document.getElementById(this.idmes);
-    //let wrap = document.createElement('div');
-    //wrap.className = 'wrap';
-    msgs. innerHTML = '<div id="msgs-list"></div>';
-    let mesList = document.getElementById('msgs-list');
+    let mesList = '<div id="msgs-list">';
     msg.forEach(item =>{
       let time = item.createdAt.getHours()+':'+item.createdAt.getMinutes();
-      mesList.innerHTML += "<div class=\"mes\">" +
-        "<img src=\"images/mn_icon.png\">" +
-        "<div class=\"mes-info\">" +
-        "<span class=\"mes-name\"> "+ item.author + "</span>" +
-        "<span class=\"mes-text\">" + item.text + "</span>" +
-        "</div>" +
-        "<span class=\"mes-time\"> " + time + "</span>" +
-        "</div>"
- })
+      let author = item.author;
+
+      if (item.to && item.author !== currentUser){
+          mesList += `<div class='mes' id='private-mes'>
+                      <img class='user-img' src='images/mn_icon.png'>`
+      }
+      else if(item.author === currentUser){
+        mesList += "<div class='mes self-mes'>"
+        author = 'Вы';
+        if (item.to){
+          mesList +=`
+              <div class="nameTo">
+              <span class="mes-name">to ${item.to}</span>
+              </div>`
+        }
+      }
+      else
+      {
+        mesList += `<div class='mes'>
+                    <img class='user-img' src='images/mn_icon.png'>`
+      }
+      mesList += `<div class='mes-info'>
+        <span class='mes-name'> ${author} </span>
+        <span class='mes-text'> ${item.text} </span>
+        </div>
+        <span class='mes-time'> ${time} </span>
+        </div>`
+
+    });
+    mesList += '</div>';
+    msgs. innerHTML = mesList;
   }
 }
 
@@ -238,18 +262,14 @@ class ActiveUsersView{
     this.idmes = containerId
   }
   display(users){
+    let userList = document.getElementById(this.idmes);
     users.forEach(item =>{
-      let items = document.getElementById(this.idmes);
-      let onlUser = document.createElement('div');
-      let imgUser = document.createElement('img');
-      let name = document.createElement('span');
-      items.append(onlUser);
-      onlUser.appendChild(imgUser);
-      onlUser.appendChild(name);
-      onlUser.className = 'onl-user';
-      imgUser.src = 'images/mn_icon.png';
-      name.textContent = item;
-    })
+      let onlUser = `<div class="onl-user">
+                  <img src="images/mn_icon.png">
+                  <span> ${item} </span>
+                 </div>`
+      userList.innerHTML += onlUser;
+    });
   }
 }
 
@@ -324,7 +344,8 @@ class Message {
      });
      result.sort((a,b ) => a.createdAt <= b.createdAt ? 1 : -1)
      result = result.slice(skip, top + skip);
-     return result.reverse();
+     result.sort((a,b ) => a.createdAt >= b.createdAt ? 1 : -1)
+     return result;
    }
 
    get(idMes){
@@ -399,41 +420,55 @@ class Message {
 
 }
 
-function showMessages(skip, top){
-  let MessagesList = list.getPage(skip, top);
-    mes.display(MessagesList);
-
+function showMessages(skip, top, filterConfig){
+  let messagesList = list.getPage(skip, top, filterConfig);
+    messagesView.display(messagesList);
 }
 
 function showActiveUsers(){
-  let list = new UserList(users, activeUsers);
-  let dis = new ActiveUsersView('usersList');
-  dis.display(list.activeUsers);
+  activeUsersView.display(userList.activeUsers);
 }
 
 function setCurrentUser(user){
-  let header = new HeaderView('user');
-  header.display(user);
+
+  headerView.display(user);
   return user;
 }
 
 function addMessage(msg){
-  list.add(msg);
-  showMessages(0, 10);
+  if (list.add(msg)){
+    showMessages(0, 10);
+    return true;
+  }
+  return false;
 }
 
 function editMessage(id,msg){
-  list.edit(id, msg);
-  showMessages(0, 10);
+  if (list.edit(id, msg)) {
+    showMessages(0, 10);
+    return true;
+  }
+  return false;
 }
 
 function removeMessage(id){
-list.remove(id);
-showMessages(0,10);
+  if (list.remove(id)) {
+   showMessages(0, 10);
+   return true
+   }
+  return false
 }
 
-const list = new MessageList(setCurrentUser('Viktoria'), messages);
-const mes = new MessagesView('list');
+
+
+const headerView = new HeaderView('user');
+const messagesView = new MessagesView('list');
+const activeUsersView = new ActiveUsersView('usersList');
+let currentUser = setCurrentUser('Viktoria');
+const list = new MessageList(currentUser, messages);
+const userList = new UserList(users, activeUsers);
+
+
 showActiveUsers();
 showMessages(0,10);
 addMessage({text:'Текст нового сообщения', to: 'Liza'});
