@@ -5,7 +5,9 @@ function createCalendar(elem, year, month){
   let temp = 0;
   let daysAmount = new Date(year, month, 0).getDate();
   const daysNames = ['пн','вт','ср','чт','пт','сб','вс'];
-  firstDay = (firstDay === 0)? 7 : 0;
+  if (firstDay === 0){
+    firstDay = 7
+  }
   table = `<table class="calendar"><tr>`
 daysNames.forEach(item => {
   table += `<th> ${item} </th>`})
@@ -34,4 +36,4 @@ daysNames.forEach(item => {
   block.innerHTML = table;
 console.log(daysAmount, firstDay);
 }
-createCalendar('date-block', '2020', '11');
+createCalendar('date-block', '2020', '2');
