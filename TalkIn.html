@@ -11,8 +11,9 @@
     <title>TalkIn</title>
 </head>
 <body>
+<div id="formMain">
     <header>
-        <div class="wrapper-header">
+        <div class="wrapper-header ">
             <div class="user-info">
                 <img src="images/wmn_icon.png" alt="user icon">
                 <span id ="user"></span>
@@ -22,9 +23,10 @@
                     <img src="images/logo_w.png" alt="logo">
                 </div>
                 <div class="exit">
-                    <span class="iconify icon-srch icon-srch-mobile" data-icon="ant-design:search-outlined" data-inline="false"></span>
-                    <span id="exit-text">Выйти</span>
-                    <span class="iconify exit-icon" data-icon="ion:exit-outline" data-inline="false"></span>
+                    <span class="iconify icon-srch icon-srch-mobile" data-icon="ant-design:search-outlined" data-inline="false"
+                          ></span>
+                    <span id="exit-text" onclick="ChangeForm('formMain', 'loginForm')">Выйти</span>
+                    <span onclick="ChangeForm('formMain', 'loginForm')"><span class="iconify exit-icon" data-icon="ion:exit-outline" data-inline="false"></span></span>
                 </div>
             </div>
         </div>
@@ -54,17 +56,57 @@
             </a>
             <div class="mes-date"><span>9 сентября</span></div>
             <div class="mes-list" id="list"></div>
-            <div class="input-form">
-                <div class="input-area">
-                    <input type="text" size="40" placeholder="Напишите сообщение...">
+            <form class="input-form" id = "send" onsubmit="event.preventDefault(); SendMessage(); this.reset();">
+                <div class="input-area" >
+                    <input type="text"  id ="text" size="40" placeholder="Напишите сообщение...">
                     <span class="iconify smile" data-icon="bi:emoji-smile" data-inline="false"></span>
                     <span class="iconify clip" data-icon="simple-line-icons:paper-clip" data-inline="false"></span>
+                    <button type = "reset" value="" id ="res"><span class="iconify click"  id ="reset" title="Очистить"data-icon="radix-icons:cross-1" data-inline="false"></span></button>
                 </div>
-                <div class="send-btn"><span class="iconify" data-icon="ic:baseline-send" data-inline="false"></span></div>
-            </div>
+                <button class="send-btn click tosend" id="addMes"  type = "submit"><span title="Отправить" class="iconify" data-icon="ic:baseline-send" data-inline="false"></span></button>
+            </form>
         </div>
         </div>
     </main>
+</div>
+    <div class="reg-form" id = "regForm">
+        <div class="reg-content">
+        <img src="images/logo_p.png" alt="logo">
+            <span class="reg-title">РЕГИСТРАЦИЯ</span>
+            <form class="main-form">
+                <span class="inputLabel">Имя</span>
+                <input value="Введите имя" class="input-field">
+                <span class="inputLabel">Пароль</span>
+                <input value="Введите пароль" class="input-field">
+                <span class="inputLabel">Подтверждение пароля</span>
+                <input value="Введите пароль еще раз" class="input-field">
+                <div class="btnSend">регистрация</div>
+                <div class="btm-area">
+                <span onclick="ChangeForm('regForm', 'loginForm')" class="click">авторизация</span>
+                <span onclick="ChangeForm('regForm', 'formMain')" class="click">к списку сообщений</span>
+                    </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="login-form" id = "loginForm">
+        <div class="reg-content">
+            <img src="images/logo_p.png" alt="logo">
+            <span class="reg-title">АВТОРИЗАЦИЯ</span>
+            <form class="main-form">
+                <span class="inputLabel">Логин</span>
+                <input value="Введите логин" class="input-field">
+                <span class="inputLabel">Пароль</span>
+                <input value="Введите пароль" class="input-field">
+                <div class="btnSend">войти</div>
+                <div class="btm-area">
+                    <span class="click" onclick="ChangeForm('loginForm', 'regForm')">регистрация</span>
+                    <span class="click" onclick="ChangeForm('loginForm', 'formMain')">к списку сообщений</span>
+                </div>
+            </form>
+        </div>
+    </div>
+
 
     <footer class="footer">
         <div class="footer-wrap">

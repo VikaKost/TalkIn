@@ -1,34 +1,34 @@
 const messages = [
   {
-    id: '1',
+    id: 'm1',
     text: 'Есть много вариантов Lorem Ipsum, но',
     createdAt: new Date('2020-10-12T23:17:36'),
     author: 'Dasha',
     isPersonal: false
   },
   {
-    id: '2',
+    id: 'm2',
     text: 'Какие дела?',
     createdAt: new Date('2020-10-12T23:19:37'),
     author: 'Max',
     isPersonal: false
   },
   {
-    id: '4',
+    id: 'm4',
     text: 'Если вам нужен Lorem Ipsum для серьёзного проекта',
     createdAt: new Date('2020-10-12T23:34:38'),
     author: 'Liza',
     isPersonal: false
   },
   {
-    id: '3',
+    id: 'm3',
     text: 'Есть много вариантов Lorem Ipsum, но',
     createdAt: new Date('2020-10-12T23:21:36'),
     author: 'Dasha',
     isPersonal: false
   },
   {
-    id: '10',
+    id: 'm10',
     text: 'Многие программы электронной вёрстки и редакторы HTML ',
     createdAt: new Date('2020-10-12T23:19:00'),
     author: 'Ivan',
@@ -36,7 +36,7 @@ const messages = [
   },
 
   {
-    id: '5',
+    id: 'm5',
     text: 'в классической латинской литературе',
     createdAt: new Date('2020-10-12T23:41:38'),
     author: 'Max',
@@ -44,14 +44,14 @@ const messages = [
     to: 'Alina'
   },
   {
-    id: '6',
+    id: 'm6',
     text: 'Он использует словарь из более чем 200',
     createdAt: new Date('2020-10-12T23:56:39'),
     author: 'Liza',
     isPersonal: false
   },
   {
-    id: '7',
+    id: 'm7',
     text: 'в классической латинской литературе',
     createdAt: new Date('2020-10-12T23:17:40'),
     author: 'Dasha',
@@ -59,28 +59,28 @@ const messages = [
     to: 'Liza'
   },
   {
-    id: '8',
+    id: 'm8',
     text: ' Его корни уходят в один фрагмент',
     createdAt: new Date('2020-10-12T23:18:56'),
     author: 'Viktoria',
     isPersonal: false
   },
   {
-    id: '9',
+    id: 'm9',
     text: 'Его популяризации в новое время',
     createdAt: new Date('2020-10-12T23:18:57'),
     author: 'Liza',
     isPersonal: false
   },
   {
-    id: '11',
+    id: 'm11',
     text: 'Его популяризации в новое время',
     createdAt: new Date('2020-10-13T14:18:57'),
     author: 'Liza',
     isPersonal: false
   },
   {
-    id: '12',
+    id: 'm12',
     text: 'что тот обеспечивает более или менее стандартное заполнение шаблона',
     createdAt: new Date('2020-10-13T15:08:40'),
     author: 'Alisa',
@@ -88,7 +88,7 @@ const messages = [
     to: 'Sasha'
   },
   {
-    id: '13',
+    id: 'm13',
     text: 'это текст-"рыба", часто используемый в печать',
     createdAt: new Date('2020-10-13T15:08:43'),
     author: 'Sasha',
@@ -96,28 +96,28 @@ const messages = [
     to: 'Alisa'
   },
   {
-    id: '14',
+    id: 'm14',
     text: 'За прошедшие годы текст Lorem Ipsum получил много версий',
     createdAt: new Date('2020-10-13T18:56:00'),
     author: 'Andrey',
     isPersonal: false
   },
   {
-    id: '15',
+    id: 'm15',
     text: 'Также все другие известные генераторы',
     createdAt: new Date('2020-10-13T18:57:40'),
     author: 'Liza',
     isPersonal: false
   },
   {
-    id: '16',
+    id: 'm16',
     text: ' Первая строка Lorem Ipsum, "Lorem ipsum dolor sit amet.."',
     createdAt: new Date('2020-10-16T06:18:40'),
     author: 'Liza',
     isPersonal: false
   },
   {
-    id: '17',
+    id: 'm17',
     text: 'В то время некий безымянный печатник создал',
     createdAt: new Date('2020-10-16T09:35:43'),
     author: 'Liza',
@@ -125,21 +125,21 @@ const messages = [
     to: 'Viktoria'
   },
   {
-    id: '18',
+    id: 'm18',
     text: 'Некоторые версии появились по ошибке',
     createdAt: new Date('2020-10-24T15:56:50'),
     author: 'Max',
     isPersonal: false
   },
   {
-    id: '19',
+    id: 'm19',
     text: 'Если вам нужен Lorem Ipsum для серьёзного проекта',
     createdAt: new Date('2020-10-24T16:02:50'),
     author: 'Liza',
     isPersonal: false
   },
   {
-    id: '20',
+    id: 'm20',
     text: 'Его популяризации в новое время послужили',
     createdAt: new Date('2020-10-24T19:41:43'),
     author: 'Liza',
@@ -147,28 +147,28 @@ const messages = [
     to: 'Vlad'
   },
   {
-    id: '21',
+    id: 'm21',
     text: 'Классический текст Lorem Ipsum, используемый с XVI века',
     createdAt: new Date('2020-10-29T12:21:50'),
     author: 'Liza',
     isPersonal: false
   },
   {
-    id: '22',
+    id: 'm22',
     text: 'он нашёл неоспоримый первоисточник',
     createdAt: new Date('2020-10-29T13:58:06'),
     author: 'Viktoria',
     isPersonal: false
   },
   {
-    id: '23',
+    id: 'm23',
     text: 'Здесь ваш текст.." Многие программы электронной вёрстки и редакторы HTML',
     createdAt: new Date('2020-11-01T17:07:06'),
     author: 'Alina',
     isPersonal: false
   },
   {
-    id: '24',
+    id: 'm24',
     text: 'происходит от одной из строк в разделе',
     createdAt: new Date('2020-11-01T17:18:06'),
     author: 'Ivan',
@@ -177,7 +177,7 @@ const messages = [
 
   },
   {
-    id: '25',
+    id: 'm25',
     text: 'За прошедшие годы',
     createdAt: new Date('2020-11-01T18:43:06'),
     author: 'Viktoria',
@@ -226,11 +226,14 @@ class MessagesView{
       let author = item.author;
 
       if (item.to && item.author !== currentUser){
-          mesList += `<div class='mes' id='private-mes'>
+          mesList += `<div class='mes private-mes' id= ${item.id}>
                       <img class='user-img' src='images/mn_icon.png'>`
       }
       else if(item.author === currentUser){
-        mesList += "<div class='mes self-mes'>"
+        mesList += `<div class='mes self-mes' > <div class="self-edit" id= ${item.id}>
+       <span onclick="ToEdit(this)"><span title="Изменить" class="iconify ed click" data-icon="emojione-monotone:pencil" data-inline="false"></span></span>
+        <span onclick="ToDelete(this)" title="Удалить" class="iconify del ed click" data-icon="carbon:delete" data-inline="false"></span>
+      </div>`
         author = 'Вы';
         if (item.to){
           mesList +=`
@@ -241,7 +244,7 @@ class MessagesView{
       }
       else
       {
-        mesList += `<div class='mes'>
+        mesList += `<div class='mes' id= ${item.id}>
                     <img class='user-img' src='images/mn_icon.png'>`
       }
       mesList += `<div class='mes-info'>
@@ -256,6 +259,7 @@ class MessagesView{
     msgs. innerHTML = mesList;
   }
 }
+
 
 class ActiveUsersView{
   constructor(containerId) {
@@ -364,7 +368,7 @@ class Message {
    }
 
     add(msg){
-       const mes = new Message({id : String(+new Date()), createdAt : new Date(), text: msg.text, author: this.user,  to: msg.to});
+       const mes = new Message({id : 'm' + String(+new Date()), createdAt : new Date(), text: msg.text, author: this.user,  to: msg.to});
        if (this.validate(mes)){
        this._messages.push(mes);
        return true;
@@ -461,6 +465,47 @@ function removeMessage(id){
 
 
 
+function ChangeForm(blockFrom, blockTo){
+  let from = document.getElementById(blockFrom);
+  let to = document.getElementById(blockTo);
+
+  from.style.display = "none";
+   to.style.display = "block";
+}
+
+function SendMessage(){
+
+   let input = document.getElementById('addMes');
+  if(input.value){
+     let text = document.getElementById('text');
+    editMessage(input.value, {text: text.value});
+    text.blur();
+    return;
+   }
+  let text = document.getElementById('text');
+  addMessage({text: text.value});
+  text.blur();
+
+
+}
+
+function ToEdit(edit){
+  let id = edit.parentNode.id;
+  let msg = list.get(id);
+  document.getElementById('addMes').value = id;
+  document.getElementById('text').value = msg.text;
+}
+
+function ToDelete(del){
+  if(confirm('Удалить сообщение?')) {
+    let id = del.parentNode.id;
+    removeMessage(id)
+  }
+}
+
+
+
+
 const headerView = new HeaderView('user');
 const messagesView = new MessagesView('list');
 const activeUsersView = new ActiveUsersView('usersList');
@@ -468,11 +513,11 @@ let currentUser = setCurrentUser('Viktoria');
 const list = new MessageList(currentUser, messages);
 const userList = new UserList(users, activeUsers);
 
-
+editMessage('m22', {text: 'Текст измененного сообщения'});
 showActiveUsers();
 showMessages(0,10);
 addMessage({text:'Текст нового сообщения', to: 'Liza'});
-editMessage('22', {text: 'Текст измененного сообщения'});
+
 //removeMessage('22');
 
 
