@@ -91,9 +91,12 @@ main{
     font-size: 1.5rem;
     margin-left: .5rem;
 }
+#formMain{
+    height:93%;
+}
 
 main{
-   height:86%;
+   height:93%;
 }
 
 .main-wrapper{
@@ -103,7 +106,7 @@ main{
 .msg-form{
     height: 100%;
     display: grid;
-    grid-template-rows: 1.8rem 1.8rem 1fr auto;
+    grid-template-rows: 1.8rem 1fr auto;
     background-color: var(--white);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-top-left-radius: 3rem;
@@ -148,7 +151,7 @@ main{
     background: var(--gray);
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
     padding: 0.3rem;
-    margin-bottom: 0.6rem;
+    margin-bottom: 1rem;
     font-size: 0.7rem;
     border-radius:0.8rem;
 }
@@ -205,8 +208,8 @@ main{
 }
 
 .nameTo{
-    position: absolute;
-    margin-left: -3.5rem;
+    position: relative;
+    top: -1.2rem;
 }
 
 .self-user-info{
@@ -386,29 +389,44 @@ main{
     color: var(--white);
 }
 
-.search-form{
-    border-radius: 1rem;
-    text-align: center;
-    background: var(--white);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    color: var(--purple);
-    border-top-left-radius: 1.5rem;
-    border-top-right-radius: 1.5rem;
-    padding: 1rem 0.5rem;
-    margin-top: 0.5rem;
+.filter{
+    width:100%;
 }
 
+.search-form{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    text-align: center;
+    padding: 0.5rem 0.5rem;
+    margin-top: 1rem;
+}
+
+.date-fil{
+}
 
 #user-filter,
 #text-filter,
 #date-filter{
-    color: darkgrey;
+    margin-right: 0.3rem;
+    color: var(--white);
+    margin-top: 0.3rem;
 }
 
 .search-area{
-    background: var(--gray);
+    background: var(--white);
     border-radius: 3rem;
-    padding: 0.2rem 0.5rem;
+    width: fit-content;
+    color: var(--purple);
+    border: none;
+    font-weight: bold;
+    margin-left: auto;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+
+}
+
+.search-area:focus{
+    outline: none;
 }
 
 .search-area input{
@@ -420,7 +438,43 @@ main{
 }
 
 .search-icon{
-    margin-right: 0.2rem;
+    margin-left: 0.5rem;
+}
+
+#userInput,
+#textInput,
+#dateToInput,
+#dateFromInput{
+    margin-right: 0.5rem;
+    margin-bottom: 0.2rem;
+    border-radius: 1rem;
+    border: none;
+    padding: 0.2rem;
+}
+
+
+#users{
+    width: 8rem;
+    background: var(--purple);
+    color: var(--white);
+    outline: none;
+    border: none;
+    border-radius: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+}
+#userInput::placeholder,
+#textInput::placeholder,
+#dateToInput::placeholder,
+#dateFromInput::placeholder{
+    color:#111;
+}
+
+#userInput,
+#dateFromInput,
+#textInput,
+#dateToInput:focus{
+    outline: none;
 }
 
 footer{
