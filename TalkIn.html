@@ -35,35 +35,43 @@
         <div class="main-wrapper">
         <div class="online-form">
             <div class="onl-list">
-                <span class="iconify top-arr" data-icon="eva:arrow-ios-upward-fill" data-inline="false"></span>
                 <div class="usersList" id = "usersList"></div>
-                <span class="iconify bottom-arr" data-icon="eva:arrow-ios-downward-outline" data-inline="false"></span>
-                <div class="search-form">
-                    <span class="iconify search-icon" data-icon="bx:bxs-user" data-inline="false" id ="user-filter"></span>
-                    <span class="iconify search-icon" data-icon="clarity:calendar-line" data-inline="false" id ="date-filter"></span>
-                    <span class="iconify search-icon" data-icon="bi:chat-left-text-fill" data-inline="false" id ="text-filter"></span>
-                    <div class="search-area">
-                        <input type="text" size="10" placeholder="Поиск">
-                        <span class="iconify icon-srch" data-icon="ant-design:search-outlined" data-inline="false"></span>
-                    </div>
+                <div class="filter">
+                <form class="search-form" onsubmit="event.preventDefault(); controller.ToFilter(event); reset()">
+                    <span class="iconify search-icon click" data-icon="bx:bxs-user" data-inline="false" id ="user-filter"></span>
+                    <input type="text" size="10" id="userInput" placeholder="Пользователь">
+                    <span class="iconify search-icon click " data-icon="bi:chat-left-text-fill" data-inline="false" id ="text-filter"></span>
+                    <input type="text" size="10" id="textInput" placeholder="Текст">
+                    <span class="iconify search-icon click textFilter" data-icon="clarity:calendar-line" data-inline="false" id ="date-filter"></span>
+                    <input  id="dateFromInput"size="10" type="datetime-local">
+                    <span></span>
+                    <input  id="dateToInput" type="datetime-local" size="10">
+
+                    <div></div>
+                    <button class="search-area click" type="submit">
+                        <span>Найти</span>
+                    </button>
+                </form>
                 </div>
             </div>
         </div>
         <div class="msg-form">
-            <a class="show-more" href="#">
+            <a class="show-more click" id="showMore">
                 <span class="iconify" data-icon="eva:arrow-ios-upward-fill" data-inline="false"></span>
                 <span class="more-text">Загрузить еще</span>
             </a>
-            <div class="mes-date"><span>9 сентября</span></div>
+
             <div class="mes-list" id="list"></div>
-            <form class="input-form" id = "send" onsubmit="event.preventDefault(); SendMessage(); this.reset();">
+            <select id = "users"></select>
+            <form class="input-form" id = "send" onsubmit="event.preventDefault(); controller.ToSend(event); reset()">
                 <div class="input-area" >
                     <input type="text"  id ="text" size="40" placeholder="Напишите сообщение...">
                     <span class="iconify smile" data-icon="bi:emoji-smile" data-inline="false"></span>
                     <span class="iconify clip" data-icon="simple-line-icons:paper-clip" data-inline="false"></span>
-                    <button type = "reset" value="" id ="res"><span class="iconify click"  id ="reset" title="Очистить"data-icon="radix-icons:cross-1" data-inline="false"></span></button>
                 </div>
-                <button class="send-btn click tosend" id="addMes"  type = "submit"><span title="Отправить" class="iconify" data-icon="ic:baseline-send" data-inline="false"></span></button>
+                <button class="send-btn click tosend" id="addMes"  value="" type = "submit">
+                    <span title="Отправить" class="iconify" data-icon="ic:baseline-send" data-inline="false"></span>
+                </button>
             </form>
         </div>
         </div>
@@ -73,14 +81,14 @@
         <div class="reg-content">
         <img src="images/logo_p.png" alt="logo">
             <span class="reg-title">РЕГИСТРАЦИЯ</span>
-            <form class="main-form">
+            <form class="main-form" onsubmit="event.preventDefault(); controller.Registration(event); reset()">
                 <span class="inputLabel">Имя</span>
-                <input value="Введите имя" class="input-field">
+                <input placeholder="Введите имя" class="input-field">
                 <span class="inputLabel">Пароль</span>
-                <input value="Введите пароль" class="input-field">
+                <input placeholder="Введите пароль" class="input-field">
                 <span class="inputLabel">Подтверждение пароля</span>
-                <input value="Введите пароль еще раз" class="input-field">
-                <div class="btnSend">регистрация</div>
+                <input placeholder="Введите пароль еще раз" class="input-field">
+                <button class="btnSend" type="submit">регистрация</button>
                 <div class="btm-area">
                 <span onclick="ChangeForm('regForm', 'loginForm')" class="click">авторизация</span>
                 <span onclick="ChangeForm('regForm', 'formMain')" class="click">к списку сообщений</span>
@@ -93,12 +101,12 @@
         <div class="reg-content">
             <img src="images/logo_p.png" alt="logo">
             <span class="reg-title">АВТОРИЗАЦИЯ</span>
-            <form class="main-form">
+            <form class="main-form" onsubmit="event.preventDefault(); controller.Login(event); reset()">
                 <span class="inputLabel">Логин</span>
-                <input value="Введите логин" class="input-field">
+                <input placeholder="Введите логин" class="input-field">
                 <span class="inputLabel">Пароль</span>
-                <input value="Введите пароль" class="input-field">
-                <div class="btnSend">войти</div>
+                <input placeholder="Введите пароль" class="input-field">
+                <button class="btnSend" type="submit">войти</button>
                 <div class="btm-area">
                     <span class="click" onclick="ChangeForm('loginForm', 'regForm')">регистрация</span>
                     <span class="click" onclick="ChangeForm('loginForm', 'formMain')">к списку сообщений</span>
@@ -118,6 +126,7 @@
             </div>
         </div>
     </footer>
-</body>
 <script src="script.js"></script>
+</body>
+
 </html>
