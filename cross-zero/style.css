@@ -1,0 +1,49 @@
+#box {
+    display: block;
+    width: 270px;
+    height: 270px;
+    background: #f3bbfa;
+    margin: 10% auto 0 auto;
+}
+
+.cell {
+    width: 90px;
+    height: 90px;
+    float: left;
+    border: 1px solid white;
+    box-sizing: border-box;
+    line-height: 90px;
+    text-align: center;
+    font-size: 50px;
+    text-transform: uppercase;
+}
+
+#mes{
+    margin: 10% auto 0 auto;
+    display: none;
+    width: fit-content;
+    flex-direction: column;
+    height: fit-content;
+    padding: 40px;
+    background: #f3bbfa;
+    text-align: center;
+}
+
+#text{
+    margin: 30px;
+    font-size: 30px;
+}
+
+#newGame:focus{
+    outline: none;
+}
+
+#newGame{
+    width: 200px;
+    background: #fff;
+    height: 50px;
+    margin: 0 auto;
+    border: none;
+    font-weight: bold;
+}
+

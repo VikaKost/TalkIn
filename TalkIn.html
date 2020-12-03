@@ -25,7 +25,7 @@
                 <div class="exit">
                     <span class="iconify icon-srch icon-srch-mobile" data-icon="ant-design:search-outlined" data-inline="false"
                           ></span>
-                    <span id="exit-text" onclick="ChangeForm('formMain', 'loginForm')">Выйти</span>
+                    <span id="exit-text" onclick="controller.ChangeForm('formMain', 'loginForm')">Выйти</span>
                     <span onclick="ChangeForm('formMain', 'loginForm')"><span class="iconify exit-icon" data-icon="ion:exit-outline" data-inline="false"></span></span>
                 </div>
             </div>
@@ -90,8 +90,8 @@
                 <input placeholder="Введите пароль еще раз" class="input-field">
                 <button class="btnSend" type="submit">регистрация</button>
                 <div class="btm-area">
-                <span onclick="ChangeForm('regForm', 'loginForm')" class="click">авторизация</span>
-                <span onclick="ChangeForm('regForm', 'formMain')" class="click">к списку сообщений</span>
+                <span onclick="controller.ChangeForm('regForm', 'loginForm')" class="click">авторизация</span>
+                <span onclick="controller.ChangeForm('regForm', 'formMain')" class="click">к списку сообщений</span>
                     </div>
             </form>
         </div>
@@ -108,8 +108,8 @@
                 <input placeholder="Введите пароль" class="input-field">
                 <button class="btnSend" type="submit">войти</button>
                 <div class="btm-area">
-                    <span class="click" onclick="ChangeForm('loginForm', 'regForm')">регистрация</span>
-                    <span class="click" onclick="ChangeForm('loginForm', 'formMain')">к списку сообщений</span>
+                    <span class="click" onclick="controller.ChangeForm('loginForm', 'regForm')">регистрация</span>
+                    <span class="click" onclick="controller.ChangeForm('loginForm', 'formMain')">к списку сообщений</span>
                 </div>
             </form>
         </div>
