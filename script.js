@@ -503,13 +503,6 @@ class Message {
 
 }
 
-function ChangeForm(blockFrom, blockTo){
-  let from = document.getElementById(blockFrom);
-  let to = document.getElementById(blockTo);
-
-  from.style.display = "none";
-   to.style.display = "block";
-}
 
 
 class Controller {
@@ -640,7 +633,7 @@ ToFilter(event){
       this.setCurrentUser(event.target[0].value);
        this.userList.addUser(event.target[0].value);
        this.showMessages(0, 10);
-      ChangeForm('regForm', 'formMain')
+      controller.ChangeForm('regForm', 'formMain')
      }
     else if(!event.target[0].value){
       alert('Заполните форму!');
@@ -657,7 +650,7 @@ ToFilter(event){
       localStorage.setItem('user',event.target[0].value);
       this.setCurrentUser(event.target[0].value);
       this.showMessages(0, 10);
-      ChangeForm('loginForm', 'formMain')
+      controller.ChangeForm('loginForm', 'formMain')
     }
     else{
       alert('Заполните форму!');
@@ -667,6 +660,17 @@ ToFilter(event){
    ShowMore(){
    mesAmount += 10;
     controller.showMessages(0,mesAmount);
+  }
+
+  ChangeForm(blockFrom, blockTo){
+    let from = document.getElementById(blockFrom);
+    let to = document.getElementById(blockTo);
+    if (blockFrom === 'formMain'){
+      localStorage.removeItem('user');
+      controller.setCurrentUser();
+    }
+    from.style.display = "none";
+    to.style.display = "block";
   }
 
 }
@@ -714,6 +718,8 @@ const sendBtn = document.getElementById('addMes');
 
 const list = document.getElementById("list");
 list.addEventListener('click', controller.ChangeMessage);
+
+
 
 
 
