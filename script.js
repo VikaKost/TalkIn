@@ -1,194 +1,6 @@
 
 
-const messages = [
-  {
-    id: 'm1',
-    text: 'Есть много вариантов Lorem Ipsum, но',
-    createdAt: new Date('2020-10-12T23:17:36'),
-    author: 'Dasha',
-    isPersonal: false
-  },
-  {
-    id: 'm2',
-    text: 'Какие дела?',
-    createdAt: new Date('2020-10-12T23:19:37'),
-    author: 'Max',
-    isPersonal: false
-  },
-  {
-    id: 'm4',
-    text: 'Если вам нужен Lorem Ipsum для серьёзного проекта',
-    createdAt: new Date('2020-10-12T23:34:38'),
-    author: 'Liza',
-    isPersonal: false
-  },
-  {
-    id: 'm3',
-    text: 'Есть много вариантов Lorem Ipsum, но',
-    createdAt: new Date('2020-10-12T23:21:36'),
-    author: 'Dasha',
-    isPersonal: false
-  },
-  {
-    id: 'm10',
-    text: 'Многие программы электронной вёрстки и редакторы HTML ',
-    createdAt: new Date('2020-10-12T23:19:00'),
-    author: 'Ivan',
-    isPersonal: false
-  },
 
-  {
-    id: 'm5',
-    text: 'в классической латинской литературе',
-    createdAt: new Date('2020-10-12T23:41:38'),
-    author: 'Max',
-    isPersonal: true,
-    to: 'Alina'
-  },
-  {
-    id: 'm6',
-    text: 'Он использует словарь из более чем 200',
-    createdAt: new Date('2020-10-12T23:56:39'),
-    author: 'Liza',
-    isPersonal: false
-  },
-  {
-    id: 'm7',
-    text: 'в классической латинской литературе',
-    createdAt: new Date('2020-10-12T23:17:40'),
-    author: 'Dasha',
-    isPersonal: true,
-    to: 'Liza'
-  },
-  {
-    id: 'm8',
-    text: ' Его корни уходят в один фрагмент',
-    createdAt: new Date('2020-10-12T23:18:56'),
-    author: 'Viktoria',
-    isPersonal: false
-  },
-  {
-    id: 'm9',
-    text: 'Его популяризации в новое время',
-    createdAt: new Date('2020-10-12T23:18:57'),
-    author: 'Liza',
-    isPersonal: false
-  },
-  {
-    id: 'm11',
-    text: 'Его популяризации в новое время',
-    createdAt: new Date('2020-10-13T14:18:57'),
-    author: 'Liza',
-    isPersonal: false
-  },
-  {
-    id: 'm12',
-    text: 'что тот обеспечивает более или менее стандартное заполнение шаблона',
-    createdAt: new Date('2020-10-13T15:08:40'),
-    author: 'Alisa',
-    isPersonal: true,
-    to: 'Sasha'
-  },
-  {
-    id: 'm13',
-    text: 'это текст-"рыба", часто используемый в печать',
-    createdAt: new Date('2020-10-13T15:08:43'),
-    author: 'Sasha',
-    isPersonal: true,
-    to: 'Alisa'
-  },
-  {
-    id: 'm14',
-    text: 'За прошедшие годы текст Lorem Ipsum получил много версий',
-    createdAt: new Date('2020-10-13T18:56:00'),
-    author: 'Andrey',
-    isPersonal: false
-  },
-  {
-    id: 'm15',
-    text: 'Также все другие известные генераторы',
-    createdAt: new Date('2020-10-13T18:57:40'),
-    author: 'Liza',
-    isPersonal: false
-  },
-  {
-    id: 'm16',
-    text: ' Первая строка Lorem Ipsum, "Lorem ipsum dolor sit amet.."',
-    createdAt: new Date('2020-10-16T06:18:40'),
-    author: 'Liza',
-    isPersonal: false
-  },
-  {
-    id: 'm17',
-    text: 'В то время некий безымянный печатник создал',
-    createdAt: new Date('2020-10-16T09:35:43'),
-    author: 'Liza',
-    isPersonal: true,
-    to: 'Viktoria'
-  },
-  {
-    id: 'm18',
-    text: 'Некоторые версии появились по ошибке',
-    createdAt: new Date('2020-10-24T15:56:50'),
-    author: 'Max',
-    isPersonal: false
-  },
-  {
-    id: 'm19',
-    text: 'Если вам нужен Lorem Ipsum для серьёзного проекта',
-    createdAt: new Date('2020-10-24T16:02:50'),
-    author: 'Liza',
-    isPersonal: false
-  },
-  {
-    id: 'm20',
-    text: 'Его популяризации в новое время послужили',
-    createdAt: new Date('2020-10-24T19:41:43'),
-    author: 'Liza',
-    isPersonal: true,
-    to: 'Vlad'
-  },
-  {
-    id: 'm21',
-    text: 'Классический текст Lorem Ipsum, используемый с XVI века',
-    createdAt: new Date('2020-10-29T12:21:50'),
-    author: 'Liza',
-    isPersonal: false
-  },
-  {
-    id: 'm22',
-    text: 'он нашёл неоспоримый первоисточник',
-    createdAt: new Date('2020-10-29T13:58:06'),
-    author: 'Viktoria',
-    isPersonal: false
-  },
-  {
-    id: 'm23',
-    text: 'Здесь ваш текст.." Многие программы электронной вёрстки и редакторы HTML',
-    createdAt: new Date('2020-11-01T17:07:06'),
-    author: 'Alina',
-    isPersonal: false
-  },
-  {
-    id: 'm24',
-    text: 'происходит от одной из строк в разделе',
-    createdAt: new Date('2020-11-01T17:18:06'),
-    author: 'Ivan',
-    isPersonal: true,
-    to : 'Viktoria'
-
-  },
-  {
-    id: 'm25',
-    text: 'За прошедшие годы',
-    createdAt: new Date('2020-11-01T18:43:06'),
-    author: 'Viktoria',
-    isPersonal: false
-  }
-];
-
-const users = ['Max', 'Alina', 'Vlad', 'Liza', 'Dasha', 'Катя', 'Nik', 'Вика', 'Sasha', 'Vlad', 'Olha'];
-const activeUsers = ['Max', 'Alina', 'Vlad', 'Liza', 'Dasha', 'Катя', 'Sasha'];
 
 class UserList{
  constructor(users, activeUsers){
@@ -270,11 +82,11 @@ class MessagesView{
       let time = item.createdAt.getDay() + '.' + item.createdAt.getMonth()+ '.' +item.createdAt.getFullYear() +'/'+ item.createdAt.getHours()+':'+item.createdAt.getMinutes();
       let author = item.author;
 
-      if (item.isPersonal && item.to === messageList.user){
+      if (item.isPersonal && item.to === localStorage.getItem('user')){
           mesList += `<div class='mes private-mes' id= ${item.id}>
                       <img class='user-img' src='images/mn_icon.png'>`
       }
-      else if(item.author === MessageList._user){
+      else if(item.author === localStorage.getItem('user')){
         mesList += `<div class='mes self-mes' id= ${item.id}> <div class="self-edit" >
        <div  class="toEdit"><span title="Изменить" class="iconify ed click" data-icon="emojione-monotone:pencil" data-inline="false"></span></div>
        <div class="toDelete"> <span  title="Удалить" class="iconify del ed click" data-icon="carbon:delete" data-inline="false"></span></div>
@@ -360,194 +172,244 @@ class Message {
 
 }
 
- class MessageList{
-   constructor() {
-     this._user = localStorage.getItem('user') || undefined;
-     const msgs = this.restore();
-     this._messages = [];
-     msgs.forEach(item => {
-       this._messages.push(new Message(item));
-     });
-   }
-
-   get messages(){
-     return this._messages;
-   }
-
-   set user(value){
-     throw new Error("this field can't be changed");
-   };
-
-   save(mes){
-     let msg = {}
-     msg.id = mes._id;
-     msg.text = mes.text;
-     msg.createdAt = mes._createdAt;
-     msg.author = mes._author;
-     msg.isPersonal = mes.isPersonal;
-     if (mes.to){
-       msg.to = mes.to;
-     }
-     let json = JSON.stringify(msg);
-     localStorage.setItem(msg.id,json);
-   }
-
-   restore(){
-     let msgs = [];
-     let value;
-     let j = 0;
-     for(let i = 0; i<localStorage.length; i++){
-       let tmp = localStorage.key(i);
-        if (tmp.includes('m')){
-         value = localStorage.getItem(tmp);
-         value = JSON.parse(value);
-         value.createdAt = new Date (value.createdAt);
-         msgs[j] = value;
-         j++;
-       }
-     }
-     return msgs;
-   }
-     getPage( skip = 0, top = 10, filterConfig={}) {
-
-       const filterObj = {
-         author: (item, author) => !author || item.author.toLowerCase().includes(author.toLowerCase()),
-         text: (item, text) => !text || item.text.toLowerCase().includes(text.toLowerCase()),
-         dateTo: (item, dateTo) => item.createdAt <= dateTo,
-         dateFrom: (item, dateFrom) => item.createdAt >= dateFrom,
-       };
-
-     let result = this._messages.slice();
-       result = this._messages.filter(item=> !item.to || item.to === this._user || item.author === this._user);
-     Object.keys(filterConfig).forEach((key) => {
-       result = result.filter((item) => filterObj[key](item, filterConfig[key]));
-     });
-     result.sort((a,b ) => a.createdAt <= b.createdAt ? 1 : -1)
-     result = result.slice(skip, top + skip);
-     result.sort((a,b ) => a.createdAt >= b.createdAt ? 1 : -1)
-     return result;
-   }
-
-   get(idMes){
-     return this._messages.find(item => item.id === idMes);
-   }
-
-    validate(msg){
-     const validateObj ={
-       id: (item) => item.id,
-       createdAt: (item) => item.createdAt,
-       isPersonal: (item) => item.isPersonal !== undefined,
-       text: (item) => item.text && item.text.length <= 200 && item.text.length > 0,
-       author: (item) => item.author && item.author.length <= 30 && item.author.length > 0
-     };
-     return Object.keys(validateObj).every((key) => validateObj[key](msg));
-   }
-
-    add(msg){
-       const mes = new Message({id : 'm' + String(+new Date()), createdAt : new Date(), text: msg.text, author: this._user,  to: msg.to});
-       if (this.validate(mes)){
-         this.save(mes);
-       this._messages.push(mes);
-
-       return true;
-     }
-     else {
-       return false;
-     }
-   }
-
-   edit(id, msg){
-     let idEdit = this.get(id);
-     if ((this._user !== idEdit.author)){
-       return false;
-     }
-     if (this.validate(idEdit) ){
-       for(let key in msg){
-         idEdit[key] = msg[key];
-       }
-       this.save(idEdit);
-       return true;
-     }
-     else{
-       return false;
-     }
-   }
-
-   remove(id){
-     let idRemove = this._messages.findIndex( currentValue => currentValue.id === id );
-     if (this._user !== this._messages[idRemove].author){
-       return false;
-     }
-     this._messages.splice(idRemove,1);
-     localStorage.removeItem(id);
-     return true;
-
-   }
-
-   addAll(msgs){
-     const arr = []
-     msgs.forEach(item => {
-     if (this.validate(item)){
-       this._messages.push(item);
-     }
-     else {
-       arr.push(item)
-     }
-     });
-     return arr;
-   }
-
-   clear(){
-     this._messages = [];
-   }
-
-}
-
+//  class MessageList{
+//    constructor() {
+//      this._user = localStorage.getItem('user') || undefined;
+//      const msgs = this.restore();
+//      this._messages = [];
+//      msgs.forEach(item => {
+//        this._messages.push(new Message(item));
+//      });
+//    }
+//
+//    get messages(){
+//      return this._messages;
+//    }
+//
+//    set user(value){
+//      throw new Error("this field can't be changed");
+//    };
+//
+//    save(mes){
+//      let msg = {}
+//      msg.id = mes._id;
+//      msg.text = mes.text;
+//      msg.createdAt = mes._createdAt;
+//      msg.author = mes._author;
+//      msg.isPersonal = mes.isPersonal;
+//      if (mes.to){
+//        msg.to = mes.to;
+//      }
+//      let json = JSON.stringify(msg);
+//      localStorage.setItem(msg.id,json);
+//    }
+//
+//    restore(){
+//      let msgs = [];
+//      let value;
+//      let j = 0;
+//      for(let i = 0; i<localStorage.length; i++){
+//        let tmp = localStorage.key(i);
+//         if (tmp.includes('m')){
+//          value = localStorage.getItem(tmp);
+//          value = JSON.parse(value);
+//          value.createdAt = new Date (value.createdAt);
+//          msgs[j] = value;
+//          j++;
+//        }
+//      }
+//      return msgs;
+//    }
+//      getPage( skip = 0, top = 10, filterConfig={}) {
+//
+//        const filterObj = {
+//          author: (item, author) => !author || item.author.toLowerCase().includes(author.toLowerCase()),
+//          text: (item, text) => !text || item.text.toLowerCase().includes(text.toLowerCase()),
+//          dateTo: (item, dateTo) => item.createdAt <= dateTo,
+//          dateFrom: (item, dateFrom) => item.createdAt >= dateFrom,
+//        };
+//
+//      let result = this._messages.slice();
+//        result = this._messages.filter(item=> !item.to || item.to === this._user || item.author === this._user);
+//      Object.keys(filterConfig).forEach((key) => {
+//        result = result.filter((item) => filterObj[key](item, filterConfig[key]));
+//      });
+//      result.sort((a,b ) => a.createdAt <= b.createdAt ? 1 : -1)
+//      result = result.slice(skip, top + skip);
+//      result.sort((a,b ) => a.createdAt >= b.createdAt ? 1 : -1)
+//      return result;
+//    }
+//
+//    get(idMes){
+//      return this._messages.find(item => item.id === idMes);
+//    }
+//
+//     validate(msg){
+//      const validateObj ={
+//        id: (item) => item.id,
+//        createdAt: (item) => item.createdAt,
+//        isPersonal: (item) => item.isPersonal !== undefined,
+//        text: (item) => item.text && item.text.length <= 200 && item.text.length > 0,
+//        author: (item) => item.author && item.author.length <= 30 && item.author.length > 0
+//      };
+//      return Object.keys(validateObj).every((key) => validateObj[key](msg));
+//    }
+//
+//     add(msg){
+//        const mes = new Message({id : 'm' + String(+new Date()), createdAt : new Date(), text: msg.text, author: this._user,  to: msg.to});
+//        if (this.validate(mes)){
+//          this.save(mes);
+//        this._messages.push(mes);
+//
+//        return mes;
+//      }
+//      else {
+//        return false;
+//      }
+//    }
+//
+//    edit(id, msg){
+//      let idEdit = this.get(id);
+//      if ((this._user !== idEdit.author)){
+//        return false;
+//      }
+//      if (this.validate(idEdit) ){
+//        for(let key in msg){
+//          idEdit[key] = msg[key];
+//        }
+//        this.save(idEdit);
+//        return true;
+//      }
+//      else{
+//        return false;
+//      }
+//    }
+//
+//    remove(id){
+//      let idRemove = this._messages.findIndex( currentValue => currentValue.id === id );
+//      if (this._user !== this._messages[idRemove].author){
+//        return false;
+//      }
+//      this._messages.splice(idRemove,1);
+//      localStorage.removeItem(id);
+//      return true;
+//
+//    }
+//
+//    addAll(msgs){
+//      const arr = []
+//      msgs.forEach(item => {
+//      if (this.validate(item)){
+//        this._messages.push(item);
+//      }
+//      else {
+//        arr.push(item)
+//      }
+//      });
+//      return arr;
+//    }
+//
+//    clear(){
+//      this._messages = [];
+//    }
+//
+// }
+//
 
 
 class Controller {
   constructor() {
-    this.userList = new UserList(users, activeUsers);
+    this.chatApiService = new ChatApiService('https://jslabdb.datamola.com');
     this.headerView = new HeaderView('user');
     this.messagesView = new MessagesView('list');
     this.activeUsersView = new ActiveUsersView('usersList');
     this.usersSelect = new UsersSelect('users');
-
   }
 
-
-
   setCurrentUser(user) {
-    if (user){
-      MessageList._user = user;
-      this.headerView.display(user);
-    }
-    else{
-      MessageList._user = localStorage.getItem('user') || undefined
-      this.headerView.display(MessageList._user);
-    }
+
+      this.headerView.display(localStorage.getItem('user'));
   }
 
   showActiveUsers() {
-    this.activeUsersView.display(this.userList.activeUsers);
+    this.chatApiService.getUsers()
+      .then(response => {
+        if(response.status === 200 || response.status === 201) {
+          return response.result;
+        }
+      })
+      .then((data) => {
+        return data.filter(user => user.isActive).map(user => user.name)
+      })
+      .then((activeUsers) => {
+        this.activeUsersView.display(activeUsers);
+      })
   }
 
   showSelectUsers(){
-    this.usersSelect.display(this.userList.activeUsers);
+    this.chatApiService.getUsers()
+      .then(response => {
+        if(response.status === 200 || response.status === 201) {
+          return response.result;
+        }
+      })
+      .then((data) => {
+        return data.filter(user => user.isActive).map(user => user.name)
+      })
+      .then((activeUsers) => {
+        this.usersSelect.display(activeUsers);
+      })
   }
 
   showMessages(skip, top, filterConfig) {
-    let messagesList = messageList.getPage(skip, top, filterConfig);
-    this.messagesView.display(messagesList);
+    this.chatApiService.getMessages(skip, top, filterConfig)
+      .then(response => {
+        if (response.status === 200 || response.status === 201) {
+          return response.result;
+        }
+      })
+      .then((data) => {
+        return data.map(message => {
+          if (message.isPersonal) {
+            return new Message({
+              id: message.id,
+              createdAt: new Date (message.createdAt),
+              author: message.author,
+              text: message.text,
+              isPersonal: message.isPersonal,
+              to: message.to
+            });
+          }
+          return new Message({
+            id: message.id,
+            createdAt: new Date (message.createdAt),
+            author: message.author,
+            text: message.text,
+            isPersonal: message.isPersonal
+          });
+        });
+      })
+      .then((msgsViewed) => {
+        this.messages = msgsViewed;
+        console.log(this.messages);
+        this.messagesView.display(msgsViewed.reverse());
+      })
+
   }
 
   addMessage(msg) {
-    if (messageList.add(msg)) {
-      this.showMessages(0, mesAmount);
+
+      let data = {
+        "text": msg.text,
+        "isPersonal": false
+      }
+
+      console.log(data);
+      this.chatApiService.addMessage(data);
+      this.showMessages();
       return true;
     }
-    return false;
-  }
+
 
   editMessage(id, msg) {
     if (messageList.edit(id, msg)) {
@@ -599,12 +461,12 @@ class Controller {
   ChangeMessage(){
     let target = event.target;
     let id = target.parentNode.parentNode.parentNode.id
-    let msg = messageList.get(id);
+    //let msg = messageList.get(id);
     if(target.parentNode.className === 'toEdit'){
-      controller.ToEdit(msg)
+      //controller.ToEdit(msg)
     }
     else if(target.parentNode.className === 'toDelete'){
-      controller.ToDelete(msg.id);
+      //controller.ToDelete(msg.id);
     }
 
   }
@@ -629,11 +491,12 @@ ToFilter(event){
 
 
   Registration(event) {
+    let data;
     if (event.target[1].value === event.target[2].value && event.target[1].value && event.target[2].value){
-      this.setCurrentUser(event.target[0].value);
-       this.userList.addUser(event.target[0].value);
-       this.showMessages(0, 10);
-      controller.ChangeForm('regForm', 'formMain')
+      this.chatApiService.Registration(event.target[0].value, event.target[1].value);
+       //this.showMessages(0, 10);
+      localStorage.setItem('user', event.target[0].value)
+      controller.ChangeForm('regForm', 'formMain', event.target[0].value)
      }
     else if(!event.target[0].value){
       alert('Заполните форму!');
@@ -646,11 +509,11 @@ ToFilter(event){
 
   Login(event){
     if (event.target[0].value && event.target[1].value){
-      messageList._user = event.target[0].value;
-      localStorage.setItem('user',event.target[0].value);
-      this.setCurrentUser(event.target[0].value);
-      this.showMessages(0, 10);
-      controller.ChangeForm('loginForm', 'formMain')
+      this.chatApiService.Login(event.target[0].value, event.target[1].value);
+      this.ChangeForm('loginForm', 'formMain')
+      this.setCurrentUser(localStorage.getItem('user'))
+      //this.showMessages(0, 10);
+      //controller.ChangeForm('loginForm', 'formMain')
     }
     else{
       alert('Заполните форму!');
@@ -662,45 +525,148 @@ ToFilter(event){
     controller.showMessages(0,mesAmount);
   }
 
-  ChangeForm(blockFrom, blockTo){
+  ChangeForm(blockFrom, blockTo, user){
     let from = document.getElementById(blockFrom);
     let to = document.getElementById(blockTo);
     if (blockFrom === 'formMain'){
-      localStorage.removeItem('user');
-      controller.setCurrentUser();
-    }
+       this.chatApiService.LogOut()
+         .then((response) => {
+           if(response.status === 200 || response.status === 201) {
+             return response.result;
+           }
+         })
+         .then((result) => {
+           if(result) {
+             localStorage.removeItem("user");
+             localStorage.removeItem("token");
+             this.init();
+           }
+         })
+     }
     from.style.display = "none";
     to.style.display = "block";
   }
 
 }
 
-function FillStorage(){
-  messages.forEach(item =>{
-    let json = JSON.stringify(item);
-    localStorage.setItem(item.id,json);
-  })
-  let usersCol = 0;
-  users.forEach(item =>{
+class ChatApiService{
+  constructor(ip) {
+    this.server = ip;
+  }
 
-    localStorage.setItem('user_'+usersCol,item );
-    usersCol++;
-  })
+  getMessages(skip = 0, top = 10, filterConfig) {
+    let url = `${this.server}/messages?skip=${skip}&top=${top}`;
+    if(filterConfig) {
+      const urlParams = Object.entries(filterConfig);
+      urlParams.forEach(item => {
+        url += `&${item[0]}=${item[1]}`;
+      });
+    }
+    let params = {};
+    if(localStorage.getItem("token")) {
+      params = {
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+          "content-type": "application/json"
+        },
+      }
+    }
+    return  fetch(url, params)
+      .then((response) => {
+        return {
+          status: response.status,
+          result: response.json()
+        }
+      });
+  }
+  addMessage(data){
+    let url = `${this.server}/messages`;
+    return fetch(url,{
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response)=>{
+        console.log(response);
+      })
 
-  let onlCol = 0;
-  activeUsers.forEach(item =>{
+  }
 
-    localStorage.setItem('onlUser_'+onlCol,item );
-    onlCol++;
-  })
+  Registration(name, pass){
+    let formdata = new FormData();
+    formdata.append("name", name);
+    formdata.append("pass", pass);
 
+    console.log(name, pass);
+    let url = `${this.server}/auth/register`
+    return fetch(url,{
+      method: "POST",
+      body: formdata
+    })
+      .then((response)=>{
+        console.log(response);
+      })
+  }
+
+  Login(name, pass){
+    let formdata = new FormData();
+    formdata.append("name", name);
+    formdata.append("pass", pass);
+
+    console.log(name, pass);
+    let url = `${this.server}/auth/login`
+    return fetch(url,{
+      method: "POST",
+      body: formdata
+    })
+      .then(response => response.json())
+      .then(result => {localStorage.setItem('token', result.token);
+        localStorage.setItem("user", name);
+      })
+  }
+
+   LogOut(){
+     const url = `${this.server}/auth/logout`;
+     const params = {
+       method: 'POST',
+       headers: {
+         "Authorization": `Bearer ${localStorage.getItem("token")}`,
+       }
+     };
+      return fetch(url, params)
+       .then((response) => {
+         if(response.status === 200 || response.status === 201) {
+           return {
+             status: response.status,
+             result: true
+           }
+         }
+         else {
+           return {
+             status: response.status,
+             result: false
+           }
+         }
+       });;
+   }
+
+  getUsers() {
+    const url = `${this.server}/users`;
+    return fetch(url)
+      .then((response) => {
+        return {
+          status: response.status,
+          result: response.json()
+        }
+      });
+  }
 }
-if (localStorage.length === 0){
-  FillStorage();
-}
+
 
 let mesAmount = 10;
-const messageList = new MessageList();
 const controller = new Controller();
 
 controller.setCurrentUser();
@@ -718,7 +684,6 @@ const sendBtn = document.getElementById('addMes');
 
 const list = document.getElementById("list");
 list.addEventListener('click', controller.ChangeMessage);
-
 
 
 
