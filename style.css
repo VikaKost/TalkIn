@@ -349,7 +349,6 @@ main{
 .onl-list {
     height: 100%;
     width: 100%;
-    margin-top: 1rem;
     position: relative;
     display: flex;
     align-items: center;
@@ -373,10 +372,12 @@ main{
 }
 
 .usersList{
-    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
+    padding: 0 0.5rem;
+    margin: 1rem 0;
+    overflow-y: auto;
 }
 
 .top-arr{
@@ -535,6 +536,8 @@ footer{
     display: block;
     margin: 0 auto;
 }
+
+
 
 .reg-content{
     width: fit-content;
