@@ -26,7 +26,7 @@ class MessagesView{
     let msgs = document.getElementById(this.idmes);
     let mesList = '<div id="msgs-list">';
     msg.forEach(item =>{
-      let time = item.createdAt.getDay() + '.' + item.createdAt.getMonth()+ '.' +item.createdAt.getFullYear() +'/'+ item.createdAt.getHours()+':'+item.createdAt.getMinutes();
+      let time = item.createdAt.getDate() + '.' + item.createdAt.getMonth()+ '.' +item.createdAt.getFullYear() +'/'+ item.createdAt.getHours()+':'+item.createdAt.getMinutes();
       let author = item.author;
 
       if (item.isPersonal && item.to === localStorage.getItem('user')){
@@ -143,6 +143,9 @@ class Controller {
     this.activeUsersView = new ActiveUsersView('usersList');
     this.usersSelect = new UsersSelect('users');
     this._mesAmount = 10;
+    this.filter = {};
+    this.messageTimeout = null;
+    this.usersTimeout = null;
 
     const loginBtn = document.getElementById('login');
     loginBtn.addEventListener('click', () => {
@@ -208,10 +211,16 @@ class Controller {
       })
       .then((activeUsers) => {
         this.activeUsersView.display(activeUsers);
+        this.usersTimeout = setTimeout(() => {
+          this.showActiveUsers();
+        }, 6000);
       });
   }
 
-  showMessages(skip, top, filterConfig) {
+  showMessages(skip = 0, top = controller.mesAmount, filterConfig) {
+    if(this.messageTimeout) {
+      clearTimeout(this.messageTimeout);
+    }
     this.chatApiService.getMessages(skip, top, filterConfig)
       .then(response => {
         if (response.status === 200 || response.status === 201) {
@@ -241,20 +250,24 @@ class Controller {
       })
       .then((msgsViewed) => {
         this.messages = msgsViewed;
-        console.log(this.messages);
         this.messagesView.display(msgsViewed.reverse());
+        this.messageTimeout = setTimeout(() => {
+          this.showMessages(skip, top, controller.filter);
+        }, 6000);
       })
   }
 
   addMessage(msg) {
-
-    console.log(msg);
+    controller.filter = {};
+    document.getElementById('filter').reset();
       this.chatApiService.addMessage(msg);
       this.showMessages();
-      return true;
+
   }
 
   editMessage(id, msg) {
+    controller.filter = {};
+    document.getElementById('filter').reset();
     this.chatApiService.editMessage(id, msg)
       .then(response => {
         return this.toResponse(response);
@@ -290,6 +303,8 @@ class Controller {
   }
 
   ToEdit(id, mes){
+    controller.filter = {};
+    document.getElementById('filter').reset();
     let msg = {};
     sendBtn.value = id;
     inputValue.value = mes;
@@ -348,20 +363,25 @@ class Controller {
 
 
 ToFilter(event){
-  let filter = {};
+    let dateFrom;
+      let dateTo;
+      this.filter = {};
+
     if(event.target[0].value){
-      filter.author = event.target[0].value;
+      this.filter.author = event.target[0].value;
     }
     if(event.target[1].value){
-      filter.text = event.target[1].value;
+      this.filter.text = event.target[1].value;
     }
     if(event.target[2].value){
-      filter.dateFrom = new Date (event.target[2].value);
+      dateFrom = new Date (event.target[2].value);
+      this.filter.dateFrom = `${ dateFrom.getFullYear()}${ dateFrom.getMonth()+1}${ dateFrom.getDate()}`;
     }
     if(event.target[3].value){
-      filter.dateTo = new Date (event.target[3].value)
+      dateTo = new Date (event.target[3].value);
+      this.filter.dateTo = `${ dateTo.getFullYear()}${ dateTo.getMonth()+1}${dateTo.getDate()}`;
     }
-  this.showMessages(0, 10, filter);
+  this.showMessages(0, 10, this.filter);
 }
 
   logout() {
@@ -436,9 +456,8 @@ ToFilter(event){
 
 
    ShowMore(){
-    console.log(controller.mesAmount);
      let number = controller.mesAmount + 10
-     controller.showMessages(0, number);
+     controller.showMessages(0, number, controller.filter);
      controller.mesAmount = number;
   }
 
