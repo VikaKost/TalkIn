@@ -346,15 +346,10 @@ main{
     border-top: 1px solid var(--white);
 }
 
-#login{
-    display: flex;
-    line-height: 1.5rem;
-
-}
-
 .onl-list {
     height: 100%;
     width: 100%;
+    margin-top: 1rem;
     position: relative;
     display: flex;
     align-items: center;
@@ -382,9 +377,6 @@ main{
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 0 0.5rem;
-    margin: 1rem 0;
-    overflow-y: auto;
 }
 
 .top-arr{
@@ -538,43 +530,11 @@ footer{
     display: none;
 }
 
-.error-page{
-    display: none;
-
-    height: 90%;
-}
-
-.error-content img{
-    height: 20rem;
-    width: 20rem;
-    display: block;
-}
-
-.error-content{
-    background: #Fff;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-}
-
-.mesBtn{
-    background: var(--purple);
-    color: var(--white);
-    padding: 0.8rem;
-    margin-top: 1rem;
-    border-radius: 2rem;
-}
-
-
 .reg-content img{
     height: 15rem;
     display: block;
     margin: 0 auto;
 }
-
-
 
 .reg-content{
     width: fit-content;

@@ -25,10 +25,8 @@
                 <div class="exit">
                     <span class="iconify icon-srch icon-srch-mobile" data-icon="ant-design:search-outlined" data-inline="false"
                           ></span>
-                    <div id="login">
-                    <span id="exit-text">Выйти</span>
-                        <span><span class="iconify exit-icon" data-icon="ion:exit-outline" data-inline="false"></span></span>
-                    </div>
+                    <span id="exit-text" onclick="controller.ChangeForm('formMain', 'loginForm')">Выйти</span>
+                    <span onclick="ChangeForm('formMain', 'loginForm')"><span class="iconify exit-icon" data-icon="ion:exit-outline" data-inline="false"></span></span>
                 </div>
             </div>
         </div>
@@ -39,15 +37,15 @@
             <div class="onl-list">
                 <div class="usersList" id = "usersList"></div>
                 <div class="filter">
-                <form class="search-form"  id="filter" onsubmit="event.preventDefault(); controller.ToFilter(event)">
+                <form class="search-form" onsubmit="event.preventDefault(); controller.ToFilter(event); reset()">
                     <span class="iconify search-icon click" data-icon="bx:bxs-user" data-inline="false" id ="user-filter"></span>
                     <input type="text" size="10" id="userInput" placeholder="Пользователь">
                     <span class="iconify search-icon click " data-icon="bi:chat-left-text-fill" data-inline="false" id ="text-filter"></span>
                     <input type="text" size="10" id="textInput" placeholder="Текст">
                     <span class="iconify search-icon click textFilter" data-icon="clarity:calendar-line" data-inline="false" id ="date-filter"></span>
-                    <input  id="dateFromInput"size="10" type="date">
+                    <input  id="dateFromInput"size="10" type="datetime-local">
                     <span></span>
-                    <input  id="dateToInput" type="date" size="10">
+                    <input  id="dateToInput" type="datetime-local" size="10">
 
                     <div></div>
                     <button class="search-area click" type="submit">
@@ -116,14 +114,6 @@
             </form>
         </div>
     </div>
-
-<div class="error-page" id = "errorPage">
-    <div class="error-content">
-        <img src="images/logo_p.png" alt="logo">
-        <span class="reg-title">АВТОРИЗАЦИЯ</span>
-        <span class="click mesBtn" onclick="controller.ChangeForm('errorPage', 'formMain')">к списку сообщений</span>
-    </div>
-</div>
 
 
     <footer class="footer">
